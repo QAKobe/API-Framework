@@ -3,6 +3,7 @@ package com.post;
 import io.restassured.common.mapper.TypeRef;
 import io.restassured.response.Response;
 import org.testng.annotations.Test;
+import utils.ConfigReader;
 
 import java.util.List;
 import java.util.Map;
@@ -15,9 +16,9 @@ public class Telegram {
     public void sendMessageToTelegram() {
 
 
-        String botToken = "7381542906:AAEbINd_Ej9PHrXSeiWqWHjYNKZrcOHueM0";
-        // String chatId = "-4060811533";
-        String chatId = "-4539329879";
+        String botToken = ConfigReader.readProperty("telegramToken");
+
+        String chatId = ConfigReader.readProperty("chat_id");
         String message = "Wassap yo";
 
         given()
@@ -33,10 +34,10 @@ public class Telegram {
 
 
     @Test
-    public void sendMsg2() {
+    public void getUpdates1() {
 
         // Task for students
-        String botToken = "7381542906:AAEbINd_Ej9PHrXSeiWqWHjYNKZrcOHueM0";
+        String botToken = ConfigReader.readProperty("telegramToken");
         Response response = given()
                 .baseUri("https://api.telegram.org")
                 .basePath("/bot" + botToken + "/getUpdates")
@@ -76,7 +77,7 @@ public class Telegram {
     public void getUpdates() {
 
 
-        String botToken = "7381542906:AAEbINd_Ej9PHrXSeiWqWHjYNKZrcOHueM0";
+        String botToken = ConfigReader.readProperty("telegramToken");
         given()
                 .baseUri("https://api.telegram.org")
                 .basePath("/bot" + botToken + "/getUpdates")
