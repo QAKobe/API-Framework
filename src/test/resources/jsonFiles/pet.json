@@ -1,0 +1,11 @@
+{
+  "id": 12,
+  "name": "zeus",
+  "photoUrls": null,
+  "tags": null,
+  "status": "gone",
+  "category": {
+    "id": 33,
+    "name": "name"
+  }
+}
