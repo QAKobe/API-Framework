@@ -6,6 +6,7 @@ import io.restassured.http.ContentType;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import org.hamcrest.Matchers;
+import org.json.JSONObject;
 import org.testng.annotations.Test;
 
 import java.util.ArrayList;
@@ -64,21 +65,21 @@ public class Countries {
                 .extract()
                 .response();
 
-//        JsonPath parsedResponse = response.jsonPath();
-//
-//
-//        List<Object> list = parsedResponse.getList("name.common");
-//        for (int i = 0; i < list.size(); i++) {
-//
-//            if (list.get(i).equals("Germany")) {
-//                System.out.println(parsedResponse.getString("capital"));
-//            }
-//
-//        }
+        JsonPath parsedResponse = response.jsonPath();
 
-        JsonPath jsonPath = response.jsonPath();
-        Object jsonObject = jsonPath.getJsonObject("name.nativeName.eng.official");
-        System.out.println(jsonObject);
+
+        List<Object> list = parsedResponse.getList("name.common");
+        for (int i = 0; i < list.size(); i++) {
+
+            if (list.get(i).equals("Germany")) {
+                list = parsedResponse.getList("capital");
+                Object str = list.get(i);
+                System.out.println(str);
+                break;
+
+            }
+
+        }
 
 
     }
@@ -117,15 +118,9 @@ public class Countries {
 
 
     @Test
-    public void getPet(){
-        RestAssured.baseURI = "https://petstore.swagger.io";
-        RestAssured.basePath = "v2/pet/40404";
+    public void getCapitalWithJsonObject() {
 
-        Response response = RestAssured.given().accept(ContentType.JSON).when().get().then().statusCode(200).extract().response();
 
-        JsonPath jsonPath = response.jsonPath();
-        Map<String, Object> category = jsonPath.getMap("category");
-        System.out.println(category);
 
 
     }

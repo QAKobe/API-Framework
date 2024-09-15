@@ -16,7 +16,7 @@ public class Telegram {
 
 
         String botToken = "7381542906:AAEbINd_Ej9PHrXSeiWqWHjYNKZrcOHueM0";
-       // String chatId = "-4060811533";
+        // String chatId = "-4060811533";
         String chatId = "-4539329879";
         String message = "Wassap yo";
 
@@ -36,7 +36,7 @@ public class Telegram {
     public void sendMsg2() {
 
         // Task for students
-        String botToken = "6774725423:AAFnKllUUWiWCRPOlTZwCWT_NYnd_JT3Okc";
+        String botToken = "7381542906:AAEbINd_Ej9PHrXSeiWqWHjYNKZrcOHueM0";
         Response response = given()
                 .baseUri("https://api.telegram.org")
                 .basePath("/bot" + botToken + "/getUpdates")
@@ -73,15 +73,11 @@ public class Telegram {
     }
 
     @Test
-    public void getUpdates(){
+    public void getUpdates() {
 
 
         String botToken = "7381542906:AAEbINd_Ej9PHrXSeiWqWHjYNKZrcOHueM0";
-        // String chatId = "-4060811533";
-        String chatId = "-4105083259";
-        String message = "test test test";
-
-       given()
+        given()
                 .baseUri("https://api.telegram.org")
                 .basePath("/bot" + botToken + "/getUpdates")
                 .when()
